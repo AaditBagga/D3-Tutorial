@@ -10,7 +10,56 @@
 <body>
     <h1>Welcome to SVGPlay</h1>
     <p>Author: <span>Aadit Bagga</span></p>
-    <object data="demo1.svg" type="image/svg+xml"></object>
+    <iframe id="svgFrame" src="demo1.svg" width="300" height="200" frameborder="0"></iframe>
+
+    <script>
+        const svgFrame = document.getElementById('svgFrame');
+        let svgDocument;
+
+        svgFrame.onload = function () {
+            svgDocument = svgFrame.contentDocument;
+        };
+
+        let viewBoxX = 0;
+        let viewBoxY = 0;
+        let viewBoxWidth = 300;
+        let viewBoxHeight = 200;
+
+        document.addEventListener('keydown', function (event) {
+            if (svgDocument) {
+                switch (event.key) {
+                    case 'w':
+                        // Pan upward
+                        viewBoxY -= 10;
+                        break;
+                    case 's':
+                        // Pan downward
+                        viewBoxY += 10;
+                        break;
+                    case 'a':
+                        // Pan left
+                        viewBoxX -= 10;
+                        break;
+                    case 'd':
+                        // Pan right
+                        viewBoxX += 10;
+                        break;
+                    case 'r':
+                        // Zoom in
+                        viewBoxWidth -= 10;
+                        viewBoxHeight -= 10;
+                        break;
+                    case 'f':
+                        // Zoom out
+                        viewBoxWidth += 10;
+                        viewBoxHeight += 10;
+                        break;
+                }
+
+                svgDocument.querySelector('svg').setAttribute('viewBox', `${viewBoxX} ${viewBoxY} ${viewBoxWidth} ${viewBoxHeight}`);
+            }
+        });
+    </script>
 
 </body>
 
