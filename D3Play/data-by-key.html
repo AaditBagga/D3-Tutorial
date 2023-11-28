@@ -30,6 +30,15 @@
         d3.selectAll("div")
             .data(data, function(d) { return d ? d.name : this.id; })
             .text(d => `${d.number} ${d.name}`);
+
+        d3.csv("data-by-key.csv").then(data => {
+            // Add a <p> element to the page and display the loaded data
+            const pElement = document.createElement("p");
+            pElement.innerText = JSON.stringify(data);
+            document.body.appendChild(pElement);
+        });
+
+
     </script>
 
     
