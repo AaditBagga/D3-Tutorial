@@ -75,14 +75,15 @@
         yAxis.selectAll(".tick text")
             .attr("fill", "magenta");
 
-        // Append circles to represent the data points.
-        svg.selectAll("circle")
-            .data(data)
-            .enter()
+        // Use D3 join operation to append circles to represent the data points.
+        const circles = svg.selectAll("circle")
+            .data(data);
+
+        circles.enter()
             .append("circle")
             .attr("cx", d => x(d.x))
             .attr("cy", d => y(d.y))
-            .attr("r", 4) 
+            .attr("r", 4)
             .attr("fill", "steelblue"); 
 
 
