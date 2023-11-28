@@ -9,8 +9,6 @@
 
 <body>
 
-    
-
     <script src="https://d3js.org/d3.v7.js"></script>
     <h1>Simple D3 Chart</h1>
     <p>Author: <span>Aadit Bagga</span></p>
@@ -43,14 +41,32 @@
             .attr("height", height);
 
         // Add the x-axis.
-        svg.append("g")
+        const xAxis = svg.append("g")
             .attr("transform", `translate(0,${height - marginBottom})`)
             .call(d3.axisBottom(x));
 
         // Add the y-axis.
-        svg.append("g")
+        const yAxis = svg.append("g")
             .attr("transform", `translate(${marginLeft},0)`)
             .call(d3.axisLeft(y));
+
+        // Modify the x-axis tick marks to be red with a stroke-width of 5
+        xAxis.selectAll(".tick line")
+            .attr("stroke", "red")
+            .attr("stroke-width", 5);
+
+        // Modify the y-axis tick marks to be blue with a stroke-width of 5
+        yAxis.selectAll(".tick line")
+            .attr("stroke", "blue")
+            .attr("stroke-width", 5);
+
+        // Modify the x-axis number marks to be green
+        xAxis.selectAll(".tick text")
+            .attr("fill", "green");
+
+        // Modify the y-axis number marks to be magenta
+        yAxis.selectAll(".tick text")
+            .attr("fill", "magenta");
 
         // Append the SVG element.
         document.getElementById("container").appendChild(svg.node());
