@@ -1,4 +1,4 @@
-data = [4, 8, 15, 16, 23, 42]
+data = [4, 8, 15, 16, 23, 42, 10, 25, 18, 30, 12, 5, 14, 22, 17, 29, 35, 40, 11, 7]
 
 {
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
@@ -18,7 +18,7 @@ data = [4, 8, 15, 16, 23, 42]
         .attr("width", width)
         .attr("height", y.range()[1])
         .attr("font-family", "sans-serif")
-        .attr("font-size", "10")
+        .attr("font-size", "14")
         .attr("text-anchor", "end");
   
     const bar = svg.selectAll("g")
@@ -27,12 +27,12 @@ data = [4, 8, 15, 16, 23, 42]
         .attr("transform", (d, i) => `translate(0,${y(i)})`);
   
     bar.append("rect")
-        .attr("fill", "steelblue")
+        .attr("fill", "green")
         .attr("width", x)
         .attr("height", y.bandwidth() - 1);
   
     bar.append("text")
-        .attr("fill", "white")
+        .attr("fill", "black")
         .attr("x", d => x(d) - 3)
         .attr("y", (y.bandwidth() - 1) / 2)
         .attr("dy", "0.35em")
