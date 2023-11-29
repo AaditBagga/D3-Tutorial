@@ -1,5 +1,3 @@
-//data = [4, 8, 15, 16, 23, 42, 10, 25, 18, 30, 12, 5, 14, 22, 17, 29, 35, 40, 11, 7]
-
 document.getElementById('csvFile').addEventListener('change', handleFileSelect);
 
 function handleFileSelect(event) {
@@ -10,9 +8,7 @@ function handleFileSelect(event) {
 
         reader.onload = function (e) {
             const csvData = d3.csvParse(e.target.result, d3.autoType);
-            const chart = updateChart(csvData);
-            document.getElementById("chart-container").innerHTML = '';
-            document.getElementById("chart-container").appendChild(chart);
+            updateChart(csvData);
         };
 
         reader.readAsText(file);
@@ -20,42 +16,47 @@ function handleFileSelect(event) {
 }
 
 function updateChart(data) {
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-    const width = 640 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+    const margin = { top: 20, right: 0, bottom: 30, left: 40 };
+    const width = 800;
+    const height = 500;
 
-    const x = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.value)])
-        .range([0, width]);
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.frequency)])
+        .range([height - margin.bottom, margin.top]);
 
-    const y = d3.scaleBand()
-        .domain(data.map(d => d.name))
-        .range([0, height])
+    const x = d3.scaleBand()
+        .domain(data.map(d => d.letter))
+        .rangeRound([margin.left, width - margin.right])
         .padding(0.1);
 
     const svg = d3.create("svg")
-        .attr("width", width)
-        .attr("height", y.range()[1])
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "14")
-        .attr("text-anchor", "end");
+        .attr("viewBox", [0, 0, width, height]);
 
-    const bar = svg.selectAll("g")
+    svg.append("g")
+        .attr("fill", "steelblue")
+        .selectAll("rect")
         .data(data)
-        .join("g")
-        .attr("transform", d => `translate(0,${y(d.name)})`);
+        .join("rect")
+        .attr("x", d => x(d.letter))
+        .attr("y", d => y(d.frequency))
+        .attr("height", d => y(0) - y(d.frequency))
+        .attr("width", x.bandwidth());
 
-    bar.append("rect")
-        .attr("fill", "green")
-        .attr("width", d => x(d.value))
-        .attr("height", y.bandwidth() - 1);
+    svg.append("g")
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x).tickSizeOuter(0));
 
-    bar.append("text")
-        .attr("fill", "black")
-        .attr("x", d => x(d.value) - 3)
-        .attr("y", (y.bandwidth() - 1) / 2)
-        .attr("dy", "0.35em")
-        .text(d => d.value);
+    svg.append("g")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y).ticks(null, "%"))
+        .call(g => g.select(".domain").remove());
 
-    return svg.node();
+    svg.append("text")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+        .attr("y", 10)
+        .text("↑ Frequency");
+
+    document.getElementById("chart-container").innerHTML = '';
+    document.getElementById("chart-container").appendChild(svg.node());
 }
