@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Flow - Call</title>
     <script src="https://d3js.org/d3.v7.js"></script>
-
 </head>
-
 <body>
     <h1>Control Flow - Call</h1>
     <p>Author: <span>Aadit Bagga</span></p>
@@ -40,19 +37,18 @@
             .attr("height", height);
 
         // Add the x-axis.
-        svg.append("g")
-            .attr("transform", `translate(0,${height - marginBottom})`)
-            .call(d3.axisBottom(x));
+        const xAxisGroup = svg.append("g")
+            .attr("transform", `translate(0,${height - marginBottom})`);
+        d3.axisBottom(x)(xAxisGroup);
 
         // Add the y-axis.
-        svg.append("g")
-            .attr("transform", `translate(${marginLeft},0)`)
-            .call(d3.axisLeft(y));
+        const yAxisGroup = svg.append("g")
+            .attr("transform", `translate(${marginLeft},0)`);
+        d3.axisLeft(y)(yAxisGroup);
 
         // Append the SVG element.
         document.body.appendChild(svg.node());
             
     </script>
 </body>
-
 </html>
