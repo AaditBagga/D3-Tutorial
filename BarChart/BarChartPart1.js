@@ -45,7 +45,7 @@ function _1(md){return(
     function _9(d3)
     {
       const p = d3.selectAll("p");
-       p.style("color", "red"); // Uncomment this line and run the code!
+      // p.style("color", "red"); // Uncomment this line and run the code!
       // p.style("color", null); // Uncomment this line to clear the color.
       return p;
     }
@@ -129,7 +129,7 @@ function _1(md){return(
     )}
     
     function _21(html){return(
-    html`<div style="font: 10px sans-serif; text-align: right; color: black;">
+    html`<div style="font: 12px sans-serif; text-align: right; color: black;">
       <div style="background: green; padding: 3px; margin: 1px; width: 40px;">4</div>
       <div style="background: green; padding: 3px; margin: 1px; width: 80px;">8</div>
       <div style="background: green; padding: 3px; margin: 1px; width: 150px;">15</div>
@@ -168,7 +168,7 @@ function _1(md){return(
     function _24(d3,data)
     {
       const div = d3.create("div")
-          .style("font", "10px sans-serif")
+          .style("font", "12px sans-serif")
           .style("text-align", "right")
           .style("color", "black");
     
@@ -195,7 +195,7 @@ function _1(md){return(
       const div = d3.create("div");
     
       // Apply some styles to the chart container.
-      div.style("font", "10px sans-serif");
+      div.style("font", "12px sans-serif");
       div.style("text-align", "right");
       div.style("color", "black");
     
@@ -272,7 +272,7 @@ function _1(md){return(
     function _37(d3,data,x)
     {
       const div = d3.create("div")
-          .style("font", "10px sans-serif")
+          .style("font", "12px sans-serif")
           .style("text-align", "right")
           .style("color", "black");
     
