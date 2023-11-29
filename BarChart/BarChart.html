@@ -4,16 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Chart Tutorial</title>
-    <link rel="stylesheet" href="BarChart.css">
+    <title>Bar Chart</title>
+    <link rel="stylesheet" type="text/css" href="./BarChart.css">
 </head>
 
 <body>
-    <h1>Bar Chart Tutorial</h1>
-    <p>Author: <span>Your Name</span></p>
+    <h1>Bar Chart</h1>
+    <p>Author: <span>Aadit Bagga</span></p>
 
     <script src="https://d3js.org/d3.v7.js"></script>
-    <script src="BarChart.js"></script>
+    <script type="module">
+
+        import define from "./BarChart.js";
+        import {Runtime, Library, Inspector} from "./runtime.js";
+        
+        const runtime = new Runtime();
+        const main = runtime.module(define, Inspector.into(document.body));
+        
+    </script>
 </body>
 
 </html>
