@@ -7,7 +7,7 @@ function _1(md){return(
     )}
     
     function _data(){return(
-    [4, 8, 15, 16, 23, 42]
+    [4, 8, 15, 16, 23, 42, 10, 25, 18, 30, 12, 5, 14, 22, 17, 29, 35, 40, 11, 7]
     )}
     
     function _3(md){return(
@@ -45,7 +45,7 @@ function _1(md){return(
     function _9(d3)
     {
       const p = d3.selectAll("p");
-      // p.style("color", "red"); // Uncomment this line and run the code!
+       p.style("color", "red"); // Uncomment this line and run the code!
       // p.style("color", null); // Uncomment this line to clear the color.
       return p;
     }
@@ -129,13 +129,27 @@ function _1(md){return(
     )}
     
     function _21(html){return(
-    html`<div style="font: 10px sans-serif; text-align: right; color: white;">
-      <div style="background: steelblue; padding: 3px; margin: 1px; width: 40px;">4</div>
-      <div style="background: steelblue; padding: 3px; margin: 1px; width: 80px;">8</div>
-      <div style="background: steelblue; padding: 3px; margin: 1px; width: 150px;">15</div>
-      <div style="background: steelblue; padding: 3px; margin: 1px; width: 160px;">16</div>
-      <div style="background: steelblue; padding: 3px; margin: 1px; width: 230px;">23</div>
-      <div style="background: steelblue; padding: 3px; margin: 1px; width: 420px;">42</div>
+    html`<div style="font: 10px sans-serif; text-align: right; color: black;">
+      <div style="background: green; padding: 3px; margin: 1px; width: 40px;">4</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 80px;">8</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 150px;">15</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 160px;">16</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 230px;">23</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 420px;">42</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 100px;">10</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 250px;">25</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 180px;">18</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 300px;">30</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 120px;">12</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 50px;">5</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 140px;">14</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 220px;">22</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 170px;">17</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 290px;">29</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 350px;">35</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 400px;">40</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 110px;">11</div>
+      <div style="background: green; padding: 3px; margin: 1px; width: 70px;">7</div>
     </div>`
     )}
     
@@ -156,12 +170,12 @@ function _1(md){return(
       const div = d3.create("div")
           .style("font", "10px sans-serif")
           .style("text-align", "right")
-          .style("color", "white");
+          .style("color", "black");
     
       div.selectAll("div")
         .data(data)
         .join("div")
-          .style("background", "steelblue")
+          .style("background", "green")
           .style("padding", "3px")
           .style("margin", "1px")
           .style("width", d => `${d * 10}px`)
@@ -183,7 +197,7 @@ function _1(md){return(
       // Apply some styles to the chart container.
       div.style("font", "10px sans-serif");
       div.style("text-align", "right");
-      div.style("color", "white");
+      div.style("color", "black");
     
       // Define the initial (empty) selection for the bars.
       const bar = div.selectAll("div");
@@ -195,7 +209,7 @@ function _1(md){return(
       const barNew = barUpdate.join("div");
     
       // Apply some styles to the bars.
-      barNew.style("background", "steelblue");
+      barNew.style("background", "green");
       barNew.style("padding", "3px");
       barNew.style("margin", "1px");
     
@@ -260,12 +274,12 @@ function _1(md){return(
       const div = d3.create("div")
           .style("font", "10px sans-serif")
           .style("text-align", "right")
-          .style("color", "white");
+          .style("color", "black");
     
       div.selectAll("div")
         .data(data)
         .join("div")
-          .style("background", "steelblue")
+          .style("background", "green")
           .style("padding", "3px")
           .style("margin", "1px")
           .style("width", d => `${x(d)}px`)
