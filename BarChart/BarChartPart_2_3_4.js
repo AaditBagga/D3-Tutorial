@@ -37,7 +37,7 @@ function updateChart(data) {
         .attr("width", width)
         .attr("height", y.range()[1])
         .attr("font-family", "sans-serif")
-        .attr("font-size", "10")
+        .attr("font-size", "14")
         .attr("text-anchor", "end");
 
     const bar = svg.selectAll("g")
@@ -46,12 +46,12 @@ function updateChart(data) {
         .attr("transform", d => `translate(0,${y(d.name)})`);
 
     bar.append("rect")
-        .attr("fill", "steelblue")
+        .attr("fill", "green")
         .attr("width", d => x(d.value))
         .attr("height", y.bandwidth() - 1);
 
     bar.append("text")
-        .attr("fill", "white")
+        .attr("fill", "black")
         .attr("x", d => x(d.value) - 3)
         .attr("y", (y.bandwidth() - 1) / 2)
         .attr("dy", "0.35em")
